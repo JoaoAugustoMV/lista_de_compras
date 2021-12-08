@@ -1,0 +1,45 @@
+body{
+    background-color: rgb(255, 210, 61);
+}
+
+header{
+
+}
+
+main{
+    padding:15px;
+    margin:10px auto;
+    width:50vw;
+    
+    background-color:white;
+    
+
+}
+
+input{
+    width:100px
+
+}
+
+div#carrinho{
+    margin:10px;
+    background-color:#e5dede;
+
+}
+
+table{
+
+}
+
+footer{
+    text-align:center;
+    margin-top:10px;
+    font: italic 13px Arial;
+
+}
+    /*
+    font-style
+    font-variant
+    font-weight
+    font-size/line-height
+    font-family*/
