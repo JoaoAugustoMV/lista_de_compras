@@ -74,11 +74,20 @@ function addTabela(item){ // Adiciona os itens na tabela
         Então é preciso recorrer ao reducer, no caso:
             - Imagine um for e cada iteração o retorno da função é atribuido ao acumulador
     */ 
-    const reducer = (acumulador, atual) =>  acumulador + atual
-    td_Total_final.innerText = totais.reduce(reducer) // Atribuindo a soma do array na tabela
     
     tbody.appendChild(tr) // Adicionando a linha ao corpo da tabela
     tbody.style.backgroundColor = 'red'
+
+    let classeQuantItens = document.querySelectorAll('.quantItens') // Retorna um NodeList
+    classeQuantItens.forEach( // Percorre o NodeList e executa a função com cada elemento
+        function(atual){
+            atual.addEventListener('change', () => {
+                alert('Mudou')
+            })// end addEventListener
+        } // end function
+    ) // end forEach
+    
+} // end addTabela(item)
 
 /*
     -Receber os inputs(check)
