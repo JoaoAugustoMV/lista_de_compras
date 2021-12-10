@@ -1,34 +1,67 @@
 body{
-    background-color: rgb(255, 210, 61);
+    background-color: rgb(250, 189, 8);
+    margin:0px;
+    padding:0px;
 }
 
 header{
-
+    font: 2em Arial;
+    text-align: center;
+    color:white;
 }
 
 main{
     padding:15px;
     margin:10px auto;
-    width:50vw;
-    
+    max-width: 550px;
+    min-width: 200px;
+    border-radius:15px;
     background-color:white;
     
-
 }
 
 input{
-    width:100px
+    width:100px;
 
+}
+input#preco, input#quantidade, input.quantItens{
+    width:50px;
+    
 }
 
 div#carrinho{
-    margin:10px;
+    margin:20px;
     background-color:#e5dede;
 
 }
 
 table{
+    background-color: red;
+    margin:auto;
+    padding:10px;
+    
+}
 
+th{
+    width:150px;
+    padding:5px 10px;
+    background-color: rgb(106, 106, 238);
+    
+}
+
+td{
+    text-align: center;
+    padding:1px;
+    background-color: yellow;
+}
+
+.th_num{
+    width: 10px;
+    background-color: green;
+}
+
+tr{
+    background-color:white;
 }
 
 footer{

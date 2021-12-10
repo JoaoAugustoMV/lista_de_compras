@@ -94,7 +94,7 @@ function addTabela(item){ // Adiciona os itens na tabela
     
     
     tbody.appendChild(tr) // Adicionando a linha ao corpo da tabela
-    tbody.style.backgroundColor = 'red'
+    
 
     atualizaTabela()  // Atualiza os totais no caso de mudança de quantidade
 
@@ -138,7 +138,6 @@ function atualizaTabela(){
 
 function atualizaTotalFinal (){ //atualiza o Total final ao confirmar um novo produto
     let td_Total_final = document.querySelector('td#Total_final')
-    td_Total_final.style.backgroundColor = 'blue'
     let classeTotalItens = document.querySelectorAll('.totalItens')
     let total_final = 0
     classeTotalItens.forEach((atual) =>{
