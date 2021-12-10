@@ -4,6 +4,8 @@ function Produto(nome, preco, quant){
     this.preco = preco,
     this.quant = quant
     this.total = preco * quant
+    this.remover = 0 // Apenas para facilitar a adição do botao remover 
+        
 }
 /*class Produto{
     constructor(nome, preco, quant){
@@ -56,8 +58,24 @@ function addTabela(item){ // Adiciona os itens na tabela
             input_n.className = `${i}Itens`
             td.appendChild(input_n)
         // end if(i == 'quant')    
-
-        } else {// Se for diferente de quant o td(valor da linha) será o atributo e a classe respectiva do item
+        
+        } else if( i == 'remover'){ // Para adicionar o botão remover
+            let btn_remover = document.createElement('button') // Cria um botão
+            btn_remover.innerText = 'remover' // Escreve no botão
+            btn_remover.className = `btn_${i}Itens` // Adiciona a classe btn_removerItens
+            btn_remover.onclick = () => { // Ao clicar no botão remover, a linha respectiva é excluida e é atualizado a tabela inteira
+                let resp = confirm(`Tem certeza que deseja remover ${tr.id} da lista? `)
+                alert(resp)
+                if (resp){
+                    tr.remove()
+                    atualizaTabela()
+                    atualizaTotalFinal()
+                }
+            }
+            td.appendChild(btn_remover)
+            //alert(item[i])
+        }
+         else {// Se for diferente de quant o td(valor da linha) será o atributo e a classe respectiva do item
             //alert('else')
             td.innerText = item[i] // Atribuindo o atributo do objeto item na posição da linha
             td.className = `${i}Itens`
