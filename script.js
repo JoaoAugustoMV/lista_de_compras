@@ -63,19 +63,24 @@ function addTabela(item){ // Adiciona os itens na tabela
             let btn_remover = document.createElement('button') // Cria um botão
             btn_remover.innerText = 'remover' // Escreve no botão
             btn_remover.className = `btn_${i}Itens` // Adiciona a classe btn_removerItens
-            btn_remover.onclick = () => { // Ao clicar no botão remover, a linha respectiva é excluida e é atualizado a tabela inteira
-                let resp = confirm(`Tem certeza que deseja remover ${tr.id} da lista? `)
-                alert(resp)
-                if (resp){
+            btn_remover.onclick = () => { /* Ao clicar no botão remover:
+                    - Tem um pergunta de confirmação
+                    - Se a resposta for sim, remove o item e atualiza a tabela inteira
+                    - Se não, nada acontece
+                 */
+                // confirm(): retorna true ou false
+                let resp = confirm(`Tem certeza que deseja remover ${tr.id} da lista? `) // Pergunta de confirmação
+                
+                if (resp){ // Se sim
                     tr.remove()
                     atualizaTabela()
                     atualizaTotalFinal()
                 }
             }
-            td.appendChild(btn_remover)
-            //alert(item[i])
+            td.appendChild(btn_remover) // Adiciona o botão
+            
         }
-         else {// Se for diferente de quant o td(valor da linha) será o atributo e a classe respectiva do item
+         else {// Se for diferente de quant e de remover, o td(valor da linha) será o atributo e a classe respectiva do item
             //alert('else')
             td.innerText = item[i] // Atribuindo o atributo do objeto item na posição da linha
             td.className = `${i}Itens`
