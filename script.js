@@ -1,4 +1,5 @@
-function Produto(nome, preco, quant){
+// Classe Produto
+function Produto(nome, preco, quant){ 
     this.nome = nome,
     this.preco = preco,
     this.quant = quant
@@ -14,9 +15,8 @@ function Produto(nome, preco, quant){
 }*/
 
 
-
+// Recebe os valores de input do produto na tabela
 function confirmar(){
-    
     
     let input_nome = document.querySelector('input#produto')
     let input_preco = document.getElementById('preco')
@@ -27,9 +27,11 @@ function confirmar(){
     let quant =  input_quant.value
 
     item = new Produto(nome, preco, quant) // Instancia novo objeto da classe Produto
-    addTabela(item)
-    alert(`Produto ${item.nome} preco${item.preco} quant ${item.quant}`)
     
+    addTabela(item)// Chamada da função com um objeto da classe Produto como parâmetro
+    // Adiciona novo produto a tabela
+    
+    // Limpeza dos campos e foco no nome
     input_nome.value = ''
     input_preco.value = ''
     input_quant.value = ''
@@ -66,19 +68,14 @@ function addTabela(item){ // Adiciona os itens na tabela
         tr.id = item.nome // id da linha será o nome do produto
     } // end for(i in item)
 
-    let td_Total_final = document.querySelector('td#Total_final')
-    td_Total_final.style.backgroundColor = 'blue'
     
-    
-    /*JavaScript não tem função ou metodo para somar um array
-        Então é preciso recorrer ao reducer, no caso:
-            - Imagine um for e cada iteração o retorno da função é atribuido ao acumulador
-    */ 
     
     tbody.appendChild(tr) // Adicionando a linha ao corpo da tabela
     tbody.style.backgroundColor = 'red'
 
-    atualizaTabela()    
+    atualizaTabela()  // Atualiza os totais no caso de mudança de quantidade
+
+    atualizaTotalFinal() // Atualiza o total final ao confirmar novo produto
     
 } // end addTabela(item)
 
@@ -116,17 +113,27 @@ function atualizaTabela(){
 
 } // end atualizarTabela()
 
-//function soma
+function atualizaTotalFinal (){ //atualiza o Total final ao confirmar um novo produto
+    let td_Total_final = document.querySelector('td#Total_final')
+    td_Total_final.style.backgroundColor = 'blue'
+    let classeTotalItens = document.querySelectorAll('.totalItens')
+    let total_final = 0
+    classeTotalItens.forEach((atual) =>{
+        total_final += Number(atual.innerText) 
+    })
+    td_Total_final.innerText = total_final
+} // end atualizaTotalFinal
+
 
 /*
     -Receber os inputs(check)
     -Validar os inputs
     -Jogar os valores na tabela (check)
-    -Botão remover item
     -Poder mudar a quantidade (check)
         - Ao mudar quantidade atualizar os totais
-            - Da linha
-            - Total final
+            - Da linha (check)
+            - Total final (check)
+    -Botão remover item
     -
 
 */
