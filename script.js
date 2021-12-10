@@ -78,16 +78,45 @@ function addTabela(item){ // Adiciona os itens na tabela
     tbody.appendChild(tr) // Adicionando a linha ao corpo da tabela
     tbody.style.backgroundColor = 'red'
 
-    let classeQuantItens = document.querySelectorAll('.quantItens') // Retorna um NodeList
-    classeQuantItens.forEach( // Percorre o NodeList e executa a função com cada elemento
-        function(atual){
-            atual.addEventListener('change', () => {
-                alert('Mudou')
-            })// end addEventListener
-        } // end function
-    ) // end forEach
+    atualizaTabela()    
     
 } // end addTabela(item)
+
+// Ao mudar os valores de quantidade os totais são atualizados
+function atualizaTabela(){
+    let classeQuantItens = document.querySelectorAll('.quantItens') // Retorna um NodeList
+    let td_Total_final = document.querySelector('td#Total_final')
+    
+    // Percorre o NodeList e executa a função com cada elemento
+    classeQuantItens.forEach(  // Adiciona um EventListener para cada input na coluna quant
+        
+        function(atual){
+            
+            atual.addEventListener('change', () => { // Ao mudar o valor da coluna Quant, será atualizado o total
+                //alert('Mudou')
+                /*
+                Usar forEach na classe totais para recalcular 
+                */
+                let classeTotalItens = document.querySelectorAll('.totalItens') // Retorna um NodeList
+                let classePrecoItens = document.querySelectorAll('.precoItens') // Retorna um NodeList
+                let total_final = 0 // será o acumulador da soma do total final
+                // Atualiza o total da linha
+                classeTotalItens.forEach(
+                    function(atual, indice){
+                        
+                        atual.innerText = Number(classePrecoItens[indice].innerText) * classeQuantItens[indice].value // Preco * quantidade a cada mudança de valor
+                        total_final += Number(atual.innerText) // soma acumulada 
+                        td_Total_final.innerText = total_final // Atribuindo a soma acumulada
+                    }) // end forEach da classeTotalItens
+                    
+                    
+            })// end addEventListener
+        } // end function do ForEach da classeQuantItens
+    ) // end forEach
+
+} // end atualizarTabela()
+
+//function soma
 
 /*
     -Receber os inputs(check)
@@ -101,6 +130,5 @@ function addTabela(item){ // Adiciona os itens na tabela
     -
 
 */
-
 
 
