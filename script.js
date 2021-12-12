@@ -146,7 +146,34 @@ function atualizaTotalFinal (){ //atualiza o Total final ao confirmar um novo pr
     td_Total_final.innerText = total_final
 } // end atualizaTotalFinal
 
+let inputs_iniciais = document.getElementsByTagName('input')
+// [0] Nome, [1] preço, [2] quantidade
+let btn_confirmar = document.getElementsByTagName('button')[0]
+// [0] confirmar
+let f = 0  // focus
 
+// Ao apertar enter mudar o foco nos inputs do começo 
+for (i =0 ;i < 3; i++){ // Varre os inputs do começo
+    
+    inputs_iniciais[i].addEventListener('keypress', function(enter){ // Monitorar as teclas 
+        
+        if(enter.key === 'Enter'){ // Se a tecla Enter for pressionada
+            
+            f++ // Ir para o proximo campo
+
+            if (f == 3){ // Se 3, significa que os 3 inputs do começo foram preenchidos
+                
+                f = 0 // focus para o primeiro input
+                btn_confirmar.click() // confirmar
+            } // if(f == 3)
+            
+            inputs_iniciais[f].focus() // focus no o
+            
+        } // end if(enter.key === 'Enter') 
+        
+    }) // end addEventListener()
+
+} // end for (i = 0 ;i < 3; i++)
 /*
     -Receber os inputs(check)
     -Validar os inputs
