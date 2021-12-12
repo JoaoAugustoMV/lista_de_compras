@@ -61,7 +61,7 @@ function addTabela(item){ // Adiciona os itens na tabela
         
         } else if( i == 'remover'){ // Para adicionar o botão remover
             let btn_remover = document.createElement('button') // Cria um botão
-            btn_remover.innerText = 'remover' // Escreve no botão
+            //btn_remover.innerText = 'remover' // Escreve no botão
             btn_remover.className = `btn_${i}Itens` // Adiciona a classe btn_removerItens
             btn_remover.onclick = () => { /* Ao clicar no botão remover:
                     - Tem um pergunta de confirmação
@@ -155,8 +155,8 @@ function atualizaTotalFinal (){ //atualiza o Total final ao confirmar um novo pr
         - Ao mudar quantidade atualizar os totais
             - Da linha (check)
             - Total final (check)
-    -Botão remover item
-    -
+    -Botão remover item (check)
+    -Botão remover todos itens
 
 */
 

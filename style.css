@@ -26,38 +26,59 @@ input{
 }
 input#preco, input#quantidade, input.quantItens{
     width:50px;
+
     
 }
 
 div#carrinho{
     margin:20px;
-    background-color:#e5dede;
+    overflow-x:auto;
+    
 
 }
 
 table{
-    background-color: red;
     margin:auto;
     padding:10px;
+    table-layout:fixed;
+    border-collapse:collapse;
+    border: 2px solid black;
+
     
 }
 
+th, td{
+    border:1px solid black;
+}
+
 th{
-    width:150px;
+    width:90px;
     padding:5px 10px;
-    background-color: rgb(106, 106, 238);
+    letter-spacing:2px;
     
 }
 
 td{
     text-align: center;
-    padding:1px;
-    background-color: yellow;
+    padding:3px 10px;
+    letter-spacing:1px;
+    
+}
+
+td > .btn_removerItens{
+    background-image:url(imagens/icones/cart-remove-icon_32px.png);
+    background-repeat:no-repeat;
+    border:0px solid transparent;
+    width:33px;
+    height:33px;
+    background-color:white;
+
+
 }
 
 .th_num{
     width: 10px;
-    background-color: green;
+    
 }
 
 tr{
