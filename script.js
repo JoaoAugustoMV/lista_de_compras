@@ -150,9 +150,9 @@ let inputs_iniciais = document.getElementsByTagName('input')
 // [0] Nome, [1] preço, [2] quantidade
 let btn_confirmar = document.getElementsByTagName('button')[0]
 // [0] confirmar
-let f = 0  // focus
 
 // Ao apertar enter mudar o foco nos inputs do começo 
+let f = 0  // focus
 for (i =0 ;i < 3; i++){ // Varre os inputs do começo
     
     inputs_iniciais[i].addEventListener('keypress', function(enter){ // Monitorar as teclas 
@@ -174,8 +174,11 @@ for (i =0 ;i < 3; i++){ // Varre os inputs do começo
     }) // end addEventListener()
 
 } // end for (i = 0 ;i < 3; i++)
+
+
 /*
     -Receber os inputs(check)
+    -Enter para trocar de campos (check)
     -Validar os inputs
     -Jogar os valores na tabela (check)
     -Poder mudar a quantidade (check)
