@@ -78,6 +78,7 @@ function addTabela(item){ // Adiciona os itens na tabela
                 }
             }
             td.appendChild(btn_remover) // Adiciona o botão
+            td.title = 'Remover Item'
             
         }
          else {// Se for diferente de quant e de remover, o td(valor da linha) será o atributo e a classe respectiva do item
