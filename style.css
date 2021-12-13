@@ -119,7 +119,9 @@ td > .btn_removerItens{
     width:33px;
     height:33px;
     background-color:white;
+
 }
+
 
 .btn_removerItens:hover{
     background-color:red;   
