@@ -146,6 +146,18 @@ function atualizaTotalFinal (){ //atualiza o Total final ao confirmar um novo pr
     td_Total_final.innerText = total_final
 } // end atualizaTotalFinal
 
+function remover_todos(){
+    linhas = document.querySelectorAll('tbody > tr')
+    resp = confirm('Tem certeza que quer remover todos os produtos')
+    if (resp){
+            for (l in linhas){
+            linhas[l].remove()
+
+            atualizaTotalFinal()
+        } // end for(l in  linhas)
+    } // end if(resp)
+}// end remover_todos()
+
 let inputs_iniciais = document.getElementsByTagName('input')
 // [0] Nome, [1] preço, [2] quantidade
 let btn_confirmar = document.getElementsByTagName('button')[0]
