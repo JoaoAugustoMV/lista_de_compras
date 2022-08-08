@@ -44,18 +44,18 @@ function confirmar(){
 function addTabela(item){ // Adiciona os itens na tabela
     let tbody = document.querySelector('tbody#itens') // Recebendo a tag do corpo da tabela
     let tr = document.createElement('tr') // Criando uma nova Linha
-    for (i in item){  // Varrendo o objeto
+    for (i in item){  // Iterando o item a ser adicionado
     
         let td = document.createElement('td') // Criando um novo td (lugar na linha)
         
         //alert('item[i]  =  ' + item[i] + '  i =  ' + i)
         
-        if(i == 'quant'){ // Se for quantidade adiciona um input da classe quantidadeItens
+        if(i == 'quant' || i == 'preco'){ // Se for quantidade adiciona um input da classe quantidadeItens
             //alert('i == quant')
             let input_n = document.createElement('input')
             input_n.type = 'number'
             input_n.value = item[i]
-            input_n.className = `${i}Itens`
+            input_n.className = `${i}Itens inputsVariaveis`
             td.appendChild(input_n)
         // end if(i == 'quant')    
         
@@ -106,10 +106,13 @@ function addTabela(item){ // Adiciona os itens na tabela
 // Ao mudar os valores de quantidade os totais são atualizados
 function atualizaTabela(){
     let classeQuantItens = document.querySelectorAll('.quantItens') // Retorna um NodeList
+    let classePrecoItens = document.querySelectorAll('.precoItens')
+    let classeInputsVariaveis = document.querySelectorAll('.inputsVariaveis')
     let td_Total_final = document.querySelector('td#Total_final')
     
     // Percorre o NodeList e executa a função com cada elemento
-    classeQuantItens.forEach(  // Adiciona um EventListener para cada input na coluna quant
+    console.log(classeInputsVariaveis)
+    classeInputsVariaveis.forEach(  // Adiciona um EventListener para cada input na coluna quant
         
         function(atual){
             
@@ -118,14 +121,14 @@ function atualizaTabela(){
                 /*
                 Usar forEach na classe totais para recalcular 
                 */
-                let classeTotalItens = document.querySelectorAll('.totalItens') // Retorna um NodeList
-                let classePrecoItens = document.querySelectorAll('.precoItens') // Retorna um NodeList
-                let total_final = 0 // será o acumulador da soma do total final
-                // Atualiza o total da linha
-                classeTotalItens.forEach(
-                    function(atual, indice){
+               let classeTotalItens = document.querySelectorAll('.totalItens') // Retorna um NodeList
+               let classePrecoItens = document.querySelectorAll('.precoItens') // Retorna um NodeList
+               let total_final = 0 // será o acumulador da soma do total final
+               // Atualiza o total da linha
+               classeTotalItens.forEach(
+                   function(atual, indice){
                         
-                        atual.innerText = Number(classePrecoItens[indice].innerText) * classeQuantItens[indice].value // Preco * quantidade a cada mudança de valor
+                        atual.innerText = (classePrecoItens[indice].value) * classeQuantItens[indice].value // Preco * quantidade a cada mudança de valor
                         total_final += Number(atual.innerText) // soma acumulada 
                         td_Total_final.innerText = total_final // Atribuindo a soma acumulada
                     }) // end forEach da classeTotalItens
@@ -164,29 +167,31 @@ let inputs_iniciais = document.getElementsByTagName('input')
 let btn_confirmar = document.getElementsByTagName('button')[0]
 // [0] confirmar
 
+
+// TODO: Confirmar ao apertar Enter
 // Ao apertar enter mudar o foco nos inputs do começo 
-let f = 0  // focus
-for (i =0 ;i < 3; i++){ // Varre os inputs do começo
+// let f = 0  // focus
+// for (i =0 ;i < 3; i++){ // Varre os inputs do começo
     
-    inputs_iniciais[i].addEventListener('keypress', function(enter){ // Monitorar as teclas 
+//     inputs_iniciais[i].addEventListener('keypress', function(enter){ // Monitorar as teclas 
         
-        if(enter.key === 'Enter'){ // Se a tecla Enter for pressionada
+//         if(enter.key === 'Enter'){ // Se a tecla Enter for pressionada
             
-            f++ // Ir para o proximo campo
+//             f++ // Ir para o proximo campo
 
-            if (f == 3){ // Se 3, significa que os 3 inputs do começo foram preenchidos
+//             if (f == 3){ // Se 3, significa que os 3 inputs do começo foram preenchidos
                 
-                f = 0 // focus para o primeiro input
-                btn_confirmar.click() // confirmar
-            } // if(f == 3)
+//                 f = 0 // focus para o primeiro input
+//                 btn_confirmar.click() // confirmar
+//             } // if(f == 3)
             
-            inputs_iniciais[f].focus() // focus no o
+//             inputs_iniciais[f].focus() // focus no o
             
-        } // end if(enter.key === 'Enter') 
+//         } // end if(enter.key === 'Enter') 
         
-    }) // end addEventListener()
+//     }) // end addEventListener()
 
-} // end for (i = 0 ;i < 3; i++)
+// } // end for (i = 0 ;i < 3; i++)
 
 
 /*
@@ -201,6 +206,13 @@ for (i =0 ;i < 3; i++){ // Varre os inputs do começo
     -Botão remover item (check)
     -Botão remover todos itens
 
+    - Modelo de compra
+    { 
+        produto: string,
+        valor: number,
+        quant: number,
+        totalProduto,
+    }
 */
 
 
