@@ -18,6 +18,16 @@ function Produto(nome, preco, quant){
 
 
 // Recebe os valores de input do produto na tabela
+let listaItens = []
+
+function atualizaLista(){ // 
+    // TO DO utilizar a listaItens(composta por Produto)
+    let linhas = document.querySelectorAll("tbody")[0].rows
+    
+    listaItens.forEach((produto) => {
+        console.log(produto)
+    })
+}
 function confirmar(){
     
     let input_nome = document.querySelector('input#produto')
@@ -29,6 +39,8 @@ function confirmar(){
     let quant =  input_quant.value
 
     item = new Produto(nome, preco, quant) // Instancia novo objeto da classe Produto
+    listaItens.push(item)
+    // tr#nomeItens
     
     addTabela(item)// Chamada da função com um objeto da classe Produto como parâmetro
     // Adiciona novo produto a tabela
@@ -105,13 +117,12 @@ function addTabela(item){ // Adiciona os itens na tabela
 
 // Ao mudar os valores de quantidade os totais são atualizados
 function atualizaTabela(){
-    let classeQuantItens = document.querySelectorAll('.quantItens') // Retorna um NodeList
-    let classePrecoItens = document.querySelectorAll('.precoItens')
+    
     let classeInputsVariaveis = document.querySelectorAll('.inputsVariaveis')
     let td_Total_final = document.querySelector('td#Total_final')
     
     // Percorre o NodeList e executa a função com cada elemento
-    console.log(classeInputsVariaveis)
+    // console.log(classeInputsVariaveis)
     classeInputsVariaveis.forEach(  // Adiciona um EventListener para cada input na coluna quant
         
         function(atual){
@@ -122,9 +133,13 @@ function atualizaTabela(){
                 Usar forEach na classe totais para recalcular 
                 */
                let classeTotalItens = document.querySelectorAll('.totalItens') // Retorna um NodeList
+               let classeQuantItens = document.querySelectorAll('.quantItens') // Retorna um NodeList
                let classePrecoItens = document.querySelectorAll('.precoItens') // Retorna um NodeList
                let total_final = 0 // será o acumulador da soma do total final
                // Atualiza o total da linha
+            //    console.log(listaItens)
+               atualizaLista()
+
                classeTotalItens.forEach(
                    function(atual, indice){
                         
@@ -213,6 +228,8 @@ let btn_confirmar = document.getElementsByTagName('button')[0]
         quant: number,
         totalProduto,
     }
+
+    
 */
 
 
